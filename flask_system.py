@@ -35,6 +35,8 @@ def index():
     disk_data = psutil.disk_usage('/')
     disk_write_data = psutil.disk_io_counters(perdisk=False)
     io_data = psutil.net_io_counters()
+    battery_data = psutil.sensors_battery()
+    
 
     data = {
         'cpu': {
@@ -57,6 +59,11 @@ def index():
         'io': {
             'sent_bytes_sec': (io_data[0] - io_data_start[0]) / period,
             'received_bytes_sec': (io_data[1] - io_data_start[1]) / period
+        },
+        'battery' : {
+            'percentage_left': battery_data[0],
+            'seconds_left': battery_data[1],
+            'charging': battery_data[2]
         }
     }
 
