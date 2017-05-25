@@ -1,3 +1,2 @@
 #!/bin/bash
-
-google-chrome-beta system_dashboard.html & python flask_system.py
+python -mwebbrowser system_dashboard.html & python flask_system.py
